@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merry Christmas and Happy New Year 2023</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.46.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/softbank/145/father-christmas_1f385.png" type="image/x-icon" />
+</head>
+<body class="bg-gray-900">
+    <div class="grid grid-flow-col gap-5 text-center auto-cols-max flex justify-center items-center h-screen ew">
+        <div class="flex flex-col">
+          <span class="countdown font-mono text-5xl">
+            <span style="--value:00;"></span>
+          </span>
+          days
+        </div> 
+        <div class="flex flex-col">
+          <span class="countdown font-mono text-5xl">
+            <span style="--value:00;"></span>
+          </span>
+          hours
+        </div> 
+        <div class="flex flex-col">
+          <span class="countdown font-mono text-5xl">
+            <span style="--value:00;"></span>
+          </span>
+          min
+        </div> 
+        <div class="flex flex-col">
+          <span class="countdown font-mono text-5xl">
+            <span style="--value:00;"></span>
+          </span>
+          sec
+        </div>
+      </div>
+      
+      <div class="grid grid-flow-col gap-5 text-center auto-cols-max flex justify-center items-center h-screen hidden eww">
+            <div class="flex flex-col">
+              <p class="font-mono text-4xl">Selamat Hari Natal dan Tahun Baru 2023</p>
+            </div>
+      </div>
+    <script>
+        const countdown = document.querySelectorAll('.countdown span');
+        const count = new Date('Dec 25, 2022 00:00:00').getTime();
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = count - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            countdown[0].style.setProperty('--value', days);
+            countdown[1].style.setProperty('--value', hours);
+            countdown[2].style.setProperty('--value', minutes);
+            countdown[3].style.setProperty('--value', seconds);
+            if (distance < 0) {
+                clearInterval(x);
+                // di dalam class ew tambahkan class hidden
+                document.querySelector('.ew').classList.add('hidden');
+                document.querySelector('.eww').classList.remove('hidden');
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
